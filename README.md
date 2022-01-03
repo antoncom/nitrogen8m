@@ -1,6 +1,6 @@
 # tsmodem_c
 
-tsmodem service written in C
+Tsmodem service written in C. MIPS, OpenWrt v.19, Simcom 7600 LTE/4G.
 
 ## Initial commit
 
