@@ -1,6 +1,6 @@
 # tsmodem_c
 
-Tsmodem service written in C. MIPS, OpenWrt v.19, Simcom 7600 LTE/4G.
+Tsmodem service written in C. Linux embedded, MIPS, OpenWrt v.19, Simcom 7600 LTE/4G.
 
 ## Initial commit
 
