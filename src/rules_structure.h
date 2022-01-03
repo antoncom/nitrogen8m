@@ -6,6 +6,7 @@
 typedef struct Source
 {
   char type[10];
+  char hash[6];
   union {
     struct {
       char name[64];
@@ -85,6 +86,12 @@ struct Source *create_source(char *model, char *array[])
     strcpy(src->x.section, array[1]);
     strcpy(src->x.option, array[2]);
     strcpy(src->x.uci_response, "");
+
+    // simple hash analogue
+    // to find in cache quickly
+    strcat(src->hash, src->x.config);
+    strcat(src->hash, src->x.section);
+    strcat(src->hash, src->x.option);
   }
   else if(strcmp(model, "ubus") == 0)
   {
@@ -93,6 +100,10 @@ struct Source *create_source(char *model, char *array[])
     strcpy(src->x.method, array[1]);
     strcpy(src->x.param, array[2]);
     strcpy(src->x.ubus_response, "");
+
+    strcat(src->hash, src->x.name);
+    strcat(src->hash, src->x.method);
+    strcat(src->hash, src->x.param);
   }
   else if(strcmp(model, "constant") == 0); // don nothing
   return src;
@@ -174,8 +185,11 @@ int total_items_in_cache(Cache *p){
 int is_in_cache(Variable *var, Module *module)
 {
   Cache *cache;
+  cache = module->cache;
   while(cache != NULL)
   {
+    if(strcmp(var->source.hash, cache->source.hash) == 0)
+        return 1;
     cache = cache->next;
   }
   return 0;
