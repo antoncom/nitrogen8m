@@ -1,12 +1,9 @@
 # tsmodem_c
 
-tsmodem service written in C
+Tsmodem service written in C. Linux embedded, MIPS, OpenWrt v.19, Simcom 7600 LTE/4G.
 
 ## Initial commit
 
 * Rules module's majour structures and methods;
 * Caching mechanism: once data is received from UBUS or UCI, it is cached internally untill all rules performing completed.
 * Pure C
-
-#### Screenshort 03.01.2022
-http://i.imgur.com/QKUwkCW.png
